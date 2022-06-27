@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :user do
-    email { "MyString" }
-    password { "MyString" }
-    name { "MyString" }
-    phone { "MyString" }
-    birthdate { "2022-06-27 21:03:27" }
-    bio { "MyString" }
+    email { "some@email.com" }
+    password { "123456abc" }
+    name { "Some Name" }
+    phone { "081234567890" }
+    birthdate { "2012-06-27 21:03:27" }
+    bio { "Some Bio" }
     picture { "MyText" }
   end
 end
