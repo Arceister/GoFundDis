@@ -15,4 +15,12 @@ RSpec.describe User, type: :model do
 
     expect(user.errors[:email]).to include("can't be blank")
   end
+
+  it "is invalid with duplicate email" do
+    user1 = FactoryBot.create(:user, email: "email@email.com")
+    user2 = FactoryBot.build(:user, email: "email@email.com")
+    
+    user2.valid?
+    expect(user2.errors[:email]).to include("has already been taken")
+  end
 end
