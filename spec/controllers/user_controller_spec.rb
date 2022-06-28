@@ -112,7 +112,10 @@ RSpec.describe UsersController do
     end
 
     context "with valid objects" do
-      
+      it "accepts requested @user" do
+        patch :update, params: {id: @user, user: attributes_for(:user)}
+        expect(assigns(:user)).to eq @user
+      end
     end
   end
 end
