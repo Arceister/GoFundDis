@@ -147,4 +147,10 @@ RSpec.describe UsersController do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    before :each do
+      @user = create(:user)
+    end
+  end
 end
