@@ -163,5 +163,10 @@ RSpec.describe UsersController do
         delete :destroy, params: { id: @user }
       }.to change(User, :count).by(-1)
     end
+
+    it "redirects to #index after delete" do
+      delete :destroy, params: { id: @user }
+      expect(response).to redirect_to users_url
+    end
   end
 end
