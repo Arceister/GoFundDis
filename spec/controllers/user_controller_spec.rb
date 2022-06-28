@@ -53,5 +53,11 @@ RSpec.describe UsersController do
       get :edit, params: { id: user }
       expect(response).to render_template(:edit)
     end
+
+    it "assign the requested user to @user" do
+      user = create(:user)
+      get :edit, params: { id: user }
+      expect(assigns(:user)).to eq user
+    end
   end
 end
