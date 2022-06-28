@@ -86,5 +86,9 @@ RSpec.describe UsersController do
         expect(response).to redirect_to(user_path(assigns[:user]))
       end
     end
+
+    context "with invalid objects" do
+      
+    end
   end
 end
