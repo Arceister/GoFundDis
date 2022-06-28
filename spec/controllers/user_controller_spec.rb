@@ -74,6 +74,11 @@ RSpec.describe UsersController do
   end
 
   describe 'POST #create' do
+    it "returns a 302 redirect HTTP status after post valid user" do
+      post :create, params: {user: attributes_for(:user)}
+      expect(response).to have_http_status(302)
+    end
+
     context "with valid objects" do
       it "saves new user in the database" do
         expect{
@@ -103,11 +108,7 @@ RSpec.describe UsersController do
 
   describe 'PATCH #update' do
     before :each do
-      @food = create(:food)
-    end
-
-    context "with valid objects" do
-      
+      @user = create(:user)
     end
   end
 end
