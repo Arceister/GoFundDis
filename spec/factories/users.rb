@@ -8,4 +8,14 @@ FactoryBot.define do
     bio { "Some Bio" }
     picture { "MyText" }
   end
+
+  factory :invalid_user, parent: :user do
+    email { nil }
+    password { nil }
+    name { nil }
+    phone { nil }
+    birthdate { nil }
+    bio { "Some Bio" }
+    picture { "MyText" }
+  end
 end
