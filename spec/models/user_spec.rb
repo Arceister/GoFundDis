@@ -30,4 +30,11 @@ RSpec.describe User, type: :model do
 
     expect(user.errors[:password]).to include("can't be blank")
   end
+
+  it "is invalid without name" do
+    user = FactoryBot.build(:user, name: nil)
+    user.valid?
+
+    expect(user.errors[:name]).to include("can't be blank")
+  end
 end
