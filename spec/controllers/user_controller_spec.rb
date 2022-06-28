@@ -40,4 +40,12 @@ RSpec.describe UsersController do
       expect(assigns(:users)).to match_array([user1, user2])
     end
   end 
+
+  describe 'GET #edit' do
+    it "returns a 200 HTTP Status" do
+      user = create(:user)
+      get :edit, params: { id: user }
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
