@@ -37,4 +37,11 @@ RSpec.describe User, type: :model do
 
     expect(user.errors[:name]).to include("can't be blank")
   end
+
+  it "is invalid without phone number" do
+    user = FactoryBot.build(:user, phone: nil)
+    user.valid?
+
+    expect(user.errors[:phone]).to include("can't be blank")
+  end
 end
