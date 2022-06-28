@@ -47,5 +47,11 @@ RSpec.describe UsersController do
       get :edit, params: { id: user }
       expect(response).to have_http_status(:ok)
     end
+
+    it "renders #edit template" do
+      user = create(:user)
+      get :edit, params: { id: user }
+      expect(response).to render_template(:edit)
+    end
   end
 end
