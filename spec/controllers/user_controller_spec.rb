@@ -93,6 +93,11 @@ RSpec.describe UsersController do
           post :create, params: {user: attributes_for(:invalid_user)}
         }.not_to change(User, :count)
       end
+
+      it "re-renders users#new after creating invalid user" do
+        post :create, params: {user: attributes_for(:invalid_user)}
+        expect(response).to render_template :new
+      end
     end
   end
 end
