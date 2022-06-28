@@ -7,5 +7,11 @@ RSpec.describe UsersController do
       get :show, params: { id: user }
       expect(response).to have_http_status(:ok)
     end
+
+    it "renders #show template" do
+      user = create(:user)
+      get :show, params: { id: user }
+      expect(response).to render_template(:show)
+    end
   end
 end
