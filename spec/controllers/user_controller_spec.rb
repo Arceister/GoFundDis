@@ -122,6 +122,11 @@ RSpec.describe UsersController do
         @user.reload
         expect(@user.email).to eq('emailbaru@email.com')
       end
+
+      it "redirects to @user #show" do
+        patch :update, params: {id: @user, user: attributes_for(:user)}
+        expect(response).to redirect_to @user
+      end
     end
   end
 end
