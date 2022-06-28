@@ -31,5 +31,13 @@ RSpec.describe UsersController do
       get :index
       expect(response).to render_template(:index)
     end
+
+    it "populate array of users" do
+      user1 = create(:user, email: "email1@email.com", phone: "089876543210")
+      user2 = create(:user, email: "email2@email.com", phone: "089876543211")
+
+      get :index
+      expect(assigns(:users)).to match_array([user1, user2])
+    end
   end 
 end
