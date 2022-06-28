@@ -111,6 +111,11 @@ RSpec.describe UsersController do
       @user = create(:user)
     end
 
+    it "returns a 302 redirect HTTP status after updated valid user" do
+      patch :update, params: {id: @user, user: attributes_for(:user)}
+      expect(response).to have_http_status(302)
+    end
+
     context "with valid objects" do
       it "accepts requested @user" do
         patch :update, params: {id: @user, user: attributes_for(:user)}
