@@ -80,6 +80,11 @@ RSpec.describe UsersController do
           post :create, params: {user: attributes_for(:user)}
         }.to change(User, :count).by(1)
       end
+
+      it "redirects to users#show after creating new user" do
+        post :create, params: {user: attributes_for(:user)}
+        expect(response).to redirect_to(user_path(assigns[:user]))
+      end
     end
   end
 end
