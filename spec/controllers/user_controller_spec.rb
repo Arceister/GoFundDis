@@ -75,6 +75,11 @@ RSpec.describe UsersController do
 
   describe 'POST #create' do
     context "with valid objects" do
+      it "saves new user in the database" do
+        expect{
+          post :create, params: {user: attributes_for(:user)}
+        }.to change(User, :count).by(1)
+      end
     end
   end
 end
