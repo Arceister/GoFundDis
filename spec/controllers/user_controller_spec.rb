@@ -110,5 +110,9 @@ RSpec.describe UsersController do
     before :each do
       @food = create(:food)
     end
+
+    context "with valid objects" do
+      
+    end
   end
 end
