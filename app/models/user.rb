@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :name, presence: true
   validates :phone, presence: true, uniqueness: true
+  validates :birthdate, presence: true
 end

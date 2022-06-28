@@ -52,4 +52,11 @@ RSpec.describe User, type: :model do
     user2.valid?
     expect(user2.errors[:phone]).to include("has already been taken")
   end
+
+  it "is invalid without birthdate" do
+    user = FactoryBot.build(:user, birthdate: nil)
+    user.valid?
+
+    expect(user.errors[:birthdate]).to include("can't be blank")
+  end
 end
