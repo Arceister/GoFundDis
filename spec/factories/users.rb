@@ -9,7 +9,7 @@ FactoryBot.define do
     picture { "MyText" }
   end
 
-  factory :invalid_user do
+  factory :invalid_user, parent: :user do
     email { nil }
     password { nil }
     name { nil }

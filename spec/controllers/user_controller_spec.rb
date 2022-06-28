@@ -88,7 +88,11 @@ RSpec.describe UsersController do
     end
 
     context "with invalid objects" do
-      
+      it "doesn't save new user in the database" do
+        expect{
+          post :create, params: {user: attributes_for(:invalid_user)}
+        }.not_to change(User, :count)
+      end
     end
   end
 end
