@@ -60,4 +60,11 @@ RSpec.describe UsersController do
       expect(assigns(:user)).to eq user
     end
   end
+  
+  describe 'GET #new' do
+    it "returns a 200 HTTP Status" do
+      get :new
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
