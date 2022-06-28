@@ -157,5 +157,11 @@ RSpec.describe UsersController do
       delete :destroy, params: { id: @user }
       expect(response).to have_http_status(302)
     end
+
+    it "deletes user from database" do
+      expect{
+        delete :destroy, params: { id: @user }
+      }.to change(User, :count).by(-1)
+    end
   end
 end
