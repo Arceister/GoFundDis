@@ -13,5 +13,11 @@ RSpec.describe UsersController do
       get :show, params: { id: user }
       expect(response).to render_template(:show)
     end
+
+    it "assign the requested user to @user" do
+      user = create(:user)
+      get :show, params: { id: user }
+      expect(assigns(:user)).to eq user
+    end
   end
 end
