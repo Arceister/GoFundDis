@@ -130,7 +130,10 @@ RSpec.describe UsersController do
     end
 
     context "with invalid objects" do
-      
+      it "doesn't save updated user in the database" do
+        patch :update, params: {id: @user, user: attributes_for(:user, email: 'emailbaru@email.com', password: nil)}
+        expect(@user.email).not_to eq('emailbaru@email.com')
+      end
     end
   end
 end
