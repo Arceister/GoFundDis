@@ -134,6 +134,12 @@ RSpec.describe UsersController do
         patch :update, params: {id: @user, user: attributes_for(:user, email: 'emailbaru@email.com', password: nil)}
         expect(@user.email).not_to eq('emailbaru@email.com')
       end
+
+      it "re-renders #edit after updating invalid user" do
+        patch :update, params: {id: @user, user: attributes_for(:invalid_user)}
+        expect(assigns(:user)).to eq @user
+        expect(response).to render_template :edit
+      end
     end
   end
 end
