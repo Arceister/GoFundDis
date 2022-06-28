@@ -105,4 +105,10 @@ RSpec.describe UsersController do
       end
     end
   end
+
+  describe 'PATCH #update' do
+    before :each do
+      @food = create(:food)
+    end
+  end
 end
