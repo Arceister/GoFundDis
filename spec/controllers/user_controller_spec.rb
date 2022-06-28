@@ -116,6 +116,12 @@ RSpec.describe UsersController do
         patch :update, params: {id: @user, user: attributes_for(:user)}
         expect(assigns(:user)).to eq @user
       end
+
+      it "changes @user" do
+        patch :update, params: {id: @user, user: attributes_for(:user, email: 'emailbaru@email.com')}
+        @user.reload
+        expect(@user.email).to eq('emailbaru@email.com')
+      end
     end
   end
 end
