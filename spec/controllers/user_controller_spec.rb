@@ -152,5 +152,10 @@ RSpec.describe UsersController do
     before :each do
       @user = create(:user)
     end
+
+    it "returns a 302 HTTP Status" do
+      delete :destroy, params: { id: @user }
+      expect(response).to have_http_status(302)
+    end
   end
 end
