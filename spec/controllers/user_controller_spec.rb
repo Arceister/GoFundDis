@@ -72,4 +72,9 @@ RSpec.describe UsersController do
       expect(response).to render_template(:new)
     end
   end
+
+  describe 'POST #create' do
+    context "with valid objects" do
+    end
+  end
 end
