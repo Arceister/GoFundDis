@@ -44,4 +44,12 @@ RSpec.describe User, type: :model do
 
     expect(user.errors[:phone]).to include("can't be blank")
   end
+
+  it "is invalid with duplicate phone" do
+    user1 = FactoryBot.create(:user, phone: "081245678932")
+    user2 = FactoryBot.build(:user, phone: "081245678932")
+    
+    user2.valid?
+    expect(user2.errors[:phone]).to include("has already been taken")
+  end
 end
