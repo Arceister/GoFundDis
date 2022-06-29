@@ -53,6 +53,13 @@ RSpec.describe UsersController do
         expect(assigns(:user)).to eq User.find(session[:user_id])
       end
     end
+
+    context "not logged in" do
+      it "redirects to login page" do
+        get :edit
+        expect(response).to redirect_to login_path
+      end
+    end
   end
   
   describe 'GET #new' do
