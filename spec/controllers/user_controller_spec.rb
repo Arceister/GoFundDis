@@ -90,6 +90,11 @@ RSpec.describe UsersController do
         post :create, params: {user: attributes_for(:user_register)}
         expect(response).to redirect_to(user_path(assigns[:user]))
       end
+
+      it "adds session when creating user success" do
+        post :create, params: {user: attributes_for(:user_register)}
+        expect(session[:user_id]).not_to be(nil)
+      end
     end
 
     context "with invalid objects" do
