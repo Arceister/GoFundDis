@@ -42,22 +42,23 @@ RSpec.describe UsersController do
   end 
 
   describe 'GET #edit' do
-    it "returns a 200 HTTP Status" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(response).to have_http_status(:ok)
+    context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        session[:user_id] = @user.id
+      end
+
+      it "show current user" do
+        get :edit
+        expect(assigns(:user)).to eq User.find(session[:user_id])
+      end
     end
 
-    it "renders #edit template" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(response).to render_template(:edit)
-    end
-
-    it "assign the requested user to @user" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(assigns(:user)).to eq user
+    context "not logged in" do
+      it "redirects to login page" do
+        get :edit
+        expect(response).to redirect_to login_path
+      end
     end
   end
   
@@ -89,6 +90,11 @@ RSpec.describe UsersController do
       it "redirects to users#show after creating new user" do
         post :create, params: {user: attributes_for(:user_register)}
         expect(response).to redirect_to(user_path(assigns[:user]))
+      end
+
+      it "adds session when creating user success" do
+        post :create, params: {user: attributes_for(:user_register)}
+        expect(session[:user_id]).not_to be(nil)
       end
     end
 
