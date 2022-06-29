@@ -17,4 +17,11 @@ RSpec.describe SessionsController do
       expect(response).to redirect_to users_path
     end
   end
+
+  describe 'GET #new' do
+    it "returns a 200 HTTP Status" do
+      get :new
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
