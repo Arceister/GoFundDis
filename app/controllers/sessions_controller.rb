@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.find_by(email: params[:email])
   end
 
   def destroy

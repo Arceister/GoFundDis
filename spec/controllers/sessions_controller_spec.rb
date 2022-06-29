@@ -32,7 +32,11 @@ RSpec.describe SessionsController do
 
   describe 'POST #create' do
     context "with valid credentials" do
-      
+      it "assign email to params" do
+        @user = create(:user_register, email: "contoh@gmail.com")
+        post :create, params: {email: "contoh@gmail.com"}
+        expect(assigns(:user)).to eq @user
+      end
     end
   end
 end
