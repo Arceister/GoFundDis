@@ -50,5 +50,13 @@ RSpec.describe SessionsController do
         expect(response).to redirect_to users_path
       end
     end
+
+    context "with invalid credentials" do
+      it "didn't give session" do
+        @user = create(:user_register, email: "contoh@gmail.com", password: "123", password_confirmation: "123")
+        post :create, params: {email: "contoh@gmail.com", password: "1234"}
+        expect(session[:user_id]).to eq(nil)
+      end
+    end
   end
 end
