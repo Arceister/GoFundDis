@@ -42,7 +42,17 @@ RSpec.describe UsersController do
   end 
 
   describe 'GET #edit' do
-    
+    context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        session[:user_id] = @user.id
+      end
+
+      it "show current user" do
+        get :edit
+        expect(assigns(:user)).to eq User.find(session[:user_id])
+      end
+    end
   end
   
   describe 'GET #new' do
