@@ -18,11 +18,10 @@
       <% else %>
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Welcome, <%= Current.user.email %>
+              Welcome, <%= Current.user.name.split[0] %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownLogin">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="/users/<%= Current.user.id %>/edit">Profile</a></li>
             <li><%= link_to "Logout", logout_path, data: {
                     turbo_method: :delete
                   }, class: "dropdown-item" %></li>
