@@ -29,4 +29,10 @@ RSpec.describe SessionsController do
       expect(response).to render_template(:new)
     end
   end
+
+  describe 'POST #create' do
+    context "with valid credentials" do
+      
+    end
+  end
 end
