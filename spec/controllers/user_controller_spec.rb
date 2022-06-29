@@ -75,19 +75,19 @@ RSpec.describe UsersController do
 
   describe 'POST #create' do
     it "returns a 302 redirect HTTP status after post valid user" do
-      post :create, params: {user: attributes_for(:user)}
+      post :create, params: {user: attributes_for(:user_register)}
       expect(response).to have_http_status(302)
     end
 
     context "with valid objects" do
       it "saves new user in the database" do
         expect{
-          post :create, params: {user: attributes_for(:user)}
+          post :create, params: {user: attributes_for(:user_register)}
         }.to change(User, :count).by(1)
       end
 
       it "redirects to users#show after creating new user" do
-        post :create, params: {user: attributes_for(:user)}
+        post :create, params: {user: attributes_for(:user_register)}
         expect(response).to redirect_to(user_path(assigns[:user]))
       end
     end
