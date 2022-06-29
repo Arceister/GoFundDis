@@ -37,6 +37,12 @@ RSpec.describe SessionsController do
         post :create, params: {email: "contoh@gmail.com"}
         expect(assigns(:user)).to eq @user
       end
+
+      it "gives session when login" do
+        @user = create(:user_register, email: "contoh@gmail.com", password: "123", password_confirmation: "123")
+        post :create, params: {email: "contoh@gmail.com", password: "123"}
+        expect(session[:user_id]).to eq(@user.id)
+      end
     end
   end
 end
