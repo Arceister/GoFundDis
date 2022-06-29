@@ -11,5 +11,10 @@ RSpec.describe SessionsController do
       delete :destroy
       expect(session[:user_id]).to be(nil)
     end
+
+    it "redirects to users path after destroyed" do
+      delete :destroy
+      expect(response).to redirect_to users_path
+    end
   end
 end
