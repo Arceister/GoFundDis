@@ -42,23 +42,7 @@ RSpec.describe UsersController do
   end 
 
   describe 'GET #edit' do
-    it "returns a 200 HTTP Status" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(response).to have_http_status(:ok)
-    end
-
-    it "renders #edit template" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(response).to render_template(:edit)
-    end
-
-    it "assign the requested user to @user" do
-      user = create(:user)
-      get :edit, params: { id: user }
-      expect(assigns(:user)).to eq user
-    end
+    
   end
   
   describe 'GET #new' do
