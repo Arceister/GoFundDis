@@ -23,5 +23,10 @@ RSpec.describe SessionsController do
       get :new
       expect(response).to have_http_status(:ok)
     end
+
+    it "renders #new template" do
+      get :new
+      expect(response).to render_template(:new)
+    end
   end
 end
