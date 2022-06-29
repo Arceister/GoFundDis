@@ -43,6 +43,12 @@ RSpec.describe SessionsController do
         post :create, params: {email: "contoh@gmail.com", password: "123"}
         expect(session[:user_id]).to eq(@user.id)
       end
+
+      it "redirects after successful login" do
+        @user = create(:user_register, email: "contoh@gmail.com", password: "123", password_confirmation: "123")
+        post :create, params: {email: "contoh@gmail.com", password: "123"}
+        expect(response).to redirect_to users_path
+      end
     end
   end
 end
