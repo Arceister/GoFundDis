@@ -1,7 +1,45 @@
-<h1>Editing user</h1>
+<%= form_with model: @user do |form| %>
+  <div class="d-flex justify-content-center">
+    <img src="https://i.stack.imgur.com/lAwxR.png" class="rounded-circle" style="width: 150px;"
+    alt="Avatar" />
+  </div>
 
-<%= render "form", user: @user %>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary btn-lg">
+      <label for="upload">Edit Foto</label>
+    </button>
+    <%= form.file_field :picture, value: "", accept: 'image/png, image/gif, image/jpeg', id: "upload", style: "display:none;" %>
+  </div>
 
+  <div class="mb-3">
+    <%= form.label :email, class: "fs-5" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "fs-5" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :phone, class: "fs-5" %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :birthdate, class: "fs-5" %>
+    <%= form.date_field :birthdate, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :bio, class: "fs-5" %>
+    <%= form.text_field :bio, class: "form-control" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= form.submit :class => "btn btn-primary mb-3" %>
+  </div>
+<% end %>
 <br>
 
 <div>
