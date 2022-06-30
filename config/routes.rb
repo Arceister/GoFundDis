@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   get "donations/:id", as: "donation", to: "donations#show"
+  get "donations", as: "donations", to: "donations#index"
 end

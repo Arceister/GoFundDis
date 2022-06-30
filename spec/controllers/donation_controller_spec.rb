@@ -20,4 +20,11 @@ RSpec.describe DonationsController do
       expect(assigns[:donation]).to eq @donation
     end
   end
+
+  describe 'GET #index' do
+    it "returns a 200 HTTP Status" do
+      get :index
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
