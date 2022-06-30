@@ -40,4 +40,12 @@ RSpec.describe Donation, type: :model do
 
     expect(donation.errors[:deadline]).to include("can't be blank")
   end
+
+  it "is invalid with deadline datetime before now" do
+    @month_ago_datetime = DateTime.now << 1
+    donation = build(:donation, deadline: @month_ago_datetime)
+    donation.valid?
+
+    expect(donation.errors[:deadline][0]).to include("must be greater")
+  end
 end
