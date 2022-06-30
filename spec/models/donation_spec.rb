@@ -26,4 +26,11 @@ RSpec.describe Donation, type: :model do
 
     expect(donation.errors[:current]).to include("can't be blank")
   end
+
+  it "is invalid with empty need" do
+    donation = build(:donation, need: nil)
+    donation.valid?
+
+    expect(donation.errors[:need]).to include("can't be blank")
+  end
 end
