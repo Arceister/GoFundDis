@@ -13,5 +13,11 @@ RSpec.describe DonationsController do
       get :show, params: {id: @donation}
       expect(response).to render_template(:show)
     end
+
+    it "assign the requested donation to @donation" do
+      @donation = create(:donation)
+      get :show, params: {id: @donation}
+      expect(assigns[:donation]).to eq @donation
+    end
   end
 end
