@@ -19,4 +19,11 @@ RSpec.describe Donation, type: :model do
 
     expect(donation2.errors[:title]).to include("has already been taken")
   end
+
+  it "is invalid with empty current" do
+    donation = build(:donation, current: nil)
+    donation.valid?
+
+    expect(donation.errors[:current]).to include("can't be blank")
+  end
 end
