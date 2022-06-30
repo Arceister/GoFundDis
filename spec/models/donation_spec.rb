@@ -11,4 +11,12 @@ RSpec.describe Donation, type: :model do
 
     expect(donation.errors[:title]).to include("can't be blank")
   end
+
+  it "is invalid with duplicate title" do
+    donation1 = create(:donation, title: "Bantu Jagad Beli PS4!")
+    donation2 = build(:donation, title: "Bantu Jagad Beli PS4!")
+    donation2.valid?
+
+    expect(donation2.errors[:title]).to include("has already been taken")
+  end
 end
