@@ -33,4 +33,11 @@ RSpec.describe Donation, type: :model do
 
     expect(donation.errors[:need]).to include("can't be blank")
   end
+
+  it "is invalid with empty deadline" do
+    donation = build(:donation, deadline: nil)
+    donation.valid?
+
+    expect(donation.errors[:deadline]).to include("can't be blank")
+  end
 end
