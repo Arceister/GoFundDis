@@ -16,7 +16,8 @@ class DonationsController < ApplicationController
   def edit
     @donation = Donation.find(params[:id])
     if Current.user
-      if Current.user.id == @donation.user_id
+      if Current.user.id != @donation.user_id
+        render :file => "#{Rails.root}/public/401.html",  layout: false, status: 401
       end
     end
   end

@@ -78,6 +78,17 @@ RSpec.describe DonationsController do
       end
 
       context "with invalid creator user_id" do
+        before :each do
+          user = create(:user)
+          session[:user_id] = user.id
+        end
+
+        it "shows 401 unauthorized page" do
+          user2 = create(:user, email: "another@email.com", phone: "081244343435")
+          donation = create(:donation, user_id: user2.id)
+          get :edit, params: {id: donation}
+          expect(response).to have_http_status(401)
+        end
       end
     end
 
