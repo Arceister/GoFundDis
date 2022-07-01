@@ -12,4 +12,12 @@ class DonationsController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def edit
+    @donation = Donation.find(params[:id])
+    if Current.user
+      if Current.user.id == @donation.user_id
+      end
+    end
+  end
 end

@@ -65,6 +65,16 @@ RSpec.describe DonationsController do
   describe 'GET #edit' do
     context "with logged in user" do
       context "with valid creator user_id" do
+        before :each do
+          user = create(:user)
+          session[:user_id] = user.id
+        end
+
+        it "renders #edit template" do
+          donation = create(:donation, user_id: session[:user_id])
+          get :edit, params: {id: donation}
+          expect(response).to render_template :edit
+        end
       end
 
       context "with invalid creator user_id" do
