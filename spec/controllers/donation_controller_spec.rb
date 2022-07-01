@@ -53,5 +53,12 @@ RSpec.describe DonationsController do
         expect(response).to render_template :new
       end
     end
+
+    context "not logged in" do
+      it "redirects to login page" do
+        get :new
+        expect(response).to redirect_to login_path
+      end
+    end
   end
 end

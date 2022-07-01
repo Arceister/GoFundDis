@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   delete "logout", to: "sessions#destroy"
 
+  get "donations/new", as: "new_donation", to: "donations#new"
   get "donations/:id", as: "donation", to: "donations#show"
   get "donations", as: "donations", to: "donations#index"
-  get "donations/new", as: "new_donation", to: "donations#new"
 end

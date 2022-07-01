@@ -8,5 +8,8 @@ class DonationsController < ApplicationController
   end
 
   def new
+    if !Current.user
+      redirect_to login_path
+    end
   end
 end
