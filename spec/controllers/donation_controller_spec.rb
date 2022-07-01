@@ -40,4 +40,18 @@ RSpec.describe DonationsController do
       expect(assigns(:donations)).to match_array([@donation1, @donation2])
     end
   end
+
+  describe 'GET #new' do
+    context "with logged in user" do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+
+      it "renders #new template" do
+        get :new
+        expect(response).to render_template :new
+      end
+    end
+  end
 end

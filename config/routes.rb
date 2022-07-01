@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   get "donations/:id", as: "donation", to: "donations#show"
   get "donations", as: "donations", to: "donations#index"
+  get "donations/new", as: "new_donation", to: "donations#new"
 end
