@@ -61,4 +61,17 @@ RSpec.describe DonationsController do
       end
     end
   end
+
+  describe 'GET #edit' do
+    context "with logged in user" do
+      context "with valid creator user_id" do
+      end
+
+      context "with invalid creator user_id" do
+      end
+    end
+
+    context "with not logged in user" do
+    end
+  end
 end
