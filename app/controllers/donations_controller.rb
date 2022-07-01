@@ -4,5 +4,6 @@ class DonationsController < ApplicationController
   end
 
   def index
+    @donations = Donation.all
   end
 end

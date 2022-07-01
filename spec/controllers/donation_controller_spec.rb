@@ -31,5 +31,13 @@ RSpec.describe DonationsController do
       get :index
       expect(response).to render_template(:index)
     end
+
+    it "populate array of donations" do
+      @donation1 = create(:donation, title: "Some Title")
+      @donation2 = create(:donation, title: "Some Title 2")
+
+      get :index
+      expect(assigns(:donations)).to match_array([@donation1, @donation2])
+    end
   end
 end
