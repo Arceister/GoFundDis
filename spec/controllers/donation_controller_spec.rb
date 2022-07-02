@@ -162,6 +162,11 @@ RSpec.describe DonationsController do
             @donation.reload
             expect(@donation.title).to eq("Bantu Jagad Beli PS5")
           end
+
+          it "redirects to @donation #show" do
+            patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Bantu Jagad Beli PS5")}
+            expect(response).to redirect_to @donation
+          end
         end
   
         context "with invalid object" do

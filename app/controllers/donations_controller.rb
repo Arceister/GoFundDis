@@ -47,7 +47,12 @@ class DonationsController < ApplicationController
     @donation = Donation.find(params[:id])
     if Current.user
       if @donation.user_id === Current.user.id
-        @donation.update(donation_params)
+        respond_to do |format|
+          if @donation.update(donation_params)
+            format.html { redirect_to donation_url(@donation), notice: "Donation was successfully updated." }
+            format.json { render :show, status: :ok, location: @donation }
+          end
+        end
       end
     end
   end
