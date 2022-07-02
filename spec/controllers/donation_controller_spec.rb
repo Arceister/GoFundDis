@@ -110,6 +110,11 @@ RSpec.describe DonationsController do
       end
       
       context "with valid pbjects" do
+        it "saves new donation in the database" do
+          expect{
+            post :create, params: {donation: attributes_for(:donation)}
+          }.to change(Donation, :count).by(1)
+        end
       end
 
       context "with invalid objects" do

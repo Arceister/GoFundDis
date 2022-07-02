@@ -23,4 +23,18 @@ class DonationsController < ApplicationController
       redirect_to login_path, notice: "You must be logged in to see this page!"
     end
   end
+
+  def create
+    if Current.user
+      @params = donation_params
+      @params[:user_id] = Current.user.id
+      @donation = Donation.new(@params)
+      @donation.save
+    end
+  end
+
+  private
+    def donation_params
+      params.require(:donation).permit(:title, :current, :need, :deadline)
+    end
 end
