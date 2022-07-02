@@ -170,7 +170,10 @@ RSpec.describe DonationsController do
         end
   
         context "with invalid object" do
-          
+          it "doesn't save updated donation in the database" do
+            patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Title Donasi", need: nil)}
+            expect(@donation.title).not_to eq("Title Donasi")
+          end
         end
       end
 

@@ -51,6 +51,9 @@ class DonationsController < ApplicationController
           if @donation.update(donation_params)
             format.html { redirect_to donation_url(@donation), notice: "Donation was successfully updated." }
             format.json { render :show, status: :ok, location: @donation }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @donation.errors, status: :unprocessable_entity }
           end
         end
       end
