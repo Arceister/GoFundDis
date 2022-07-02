@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "donations/:id", as: "donation", to: "donations#show"
   get "donations", as: "donations", to: "donations#index"
   post "donations", as: "", to: "donations#create"
-  patch "donations", as: "", to: "donations#update"
-  put "donations", as: "", to: "donations#update"
+  patch "donations/:id", as: "", to: "donations#update"
+  put "donations/:id", as: "", to: "donations#update"
+  delete "donations/:id", as: "", to: "donations#destroy"
 end

@@ -64,6 +64,15 @@ class DonationsController < ApplicationController
     end
   end
 
+  def destroy
+    @donation = Donation.find(params[:id])
+    if Current.user
+      if @donation.user_id === Current.user.id
+        @donation.destroy
+      end
+    end
+  end
+
   private
     def donation_params
       params.require(:donation).permit(:title, :current, :need, :deadline)

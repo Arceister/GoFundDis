@@ -220,6 +220,12 @@ RSpec.describe DonationsController do
         before :each do
           @donation = create(:donation, user_id: session[:user_id])
         end
+
+        it "deletes donation from database" do
+          expect{
+            delete :destroy, params: {id: @donation}
+          }.to change(Donation, :count).by(-1)
+        end
       end
 
       context "with invalid user id" do
