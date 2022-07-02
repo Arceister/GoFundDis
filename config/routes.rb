@@ -11,4 +11,13 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
 
   delete "logout", to: "sessions#destroy"
+
+  get "donations/:id/edit", as: "edit_donation", to: "donations#edit"
+  get "donations/new", as: "new_donation", to: "donations#new"
+  get "donations/:id", as: "donation", to: "donations#show"
+  get "donations", as: "donations", to: "donations#index"
+  post "donations", as: "", to: "donations#create"
+  patch "donations/:id", as: "", to: "donations#update"
+  put "donations/:id", as: "", to: "donations#update"
+  delete "donations/:id", as: "", to: "donations#destroy"
 end
