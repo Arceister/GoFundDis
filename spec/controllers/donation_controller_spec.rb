@@ -197,7 +197,15 @@ RSpec.describe DonationsController do
     end
 
     context "with not logged in user" do
+      before :each do
+        @user = create(:user)
+        @donation = create(:donation, user_id: @user.id)
+      end
       
+      it "redirects to login page" do
+        patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Bantu Jagad Beli PS5")}
+        expect(response).to redirect_to login_path
+      end
     end
   end
 end
