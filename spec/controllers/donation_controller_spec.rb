@@ -146,9 +146,22 @@ RSpec.describe DonationsController do
 
   describe 'PATCH #update' do
     context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        session[:user_id] = @user.id
+      end
+
       context "with correct user" do
+        before :each do
+          @donation = create(:donation, user_id: session[:user_id])
+        end
+
         context "with valid object" do
-          
+          it "changes @donation" do
+            patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Bantu Jagad Beli PS5")}
+            @donation.reload
+            expect(@donation.title).to eq("Bantu Jagad Beli PS5")
+          end
         end
   
         context "with invalid object" do
