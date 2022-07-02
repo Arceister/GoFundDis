@@ -238,6 +238,11 @@ RSpec.describe DonationsController do
           @user2 = create(:user, email: "emailbaru2@email.com", phone: "08129333333333")
           @donation = create(:donation, user_id: @user2.id)
         end
+
+        it "returns 401 http status" do
+          delete :destroy, params: {id: @donation}
+          expect(response).to have_http_status(401)
+        end
       end
     end
 

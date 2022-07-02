@@ -74,6 +74,8 @@ class DonationsController < ApplicationController
           format.html { redirect_to donations_url, notice: "Donation successfully deleted!" }
           format.json { head :no_content }
         end
+      else
+        render :file => "#{Rails.root}/public/401.html",  layout: false, status: 401
       end
     end
   end
