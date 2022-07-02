@@ -69,6 +69,11 @@ class DonationsController < ApplicationController
     if Current.user
       if @donation.user_id === Current.user.id
         @donation.destroy
+
+        respond_to do |format|
+          format.html { redirect_to donations_url, notice: "Donation successfully deleted!" }
+          format.json { head :no_content }
+        end
       end
     end
   end

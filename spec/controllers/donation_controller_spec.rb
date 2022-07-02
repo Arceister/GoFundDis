@@ -226,6 +226,11 @@ RSpec.describe DonationsController do
             delete :destroy, params: {id: @donation}
           }.to change(Donation, :count).by(-1)
         end
+
+        it "redirects to #index after delete" do
+          delete :destroy, params: {id: @donation}
+          expect(response).to redirect_to donations_url
+        end
       end
 
       context "with invalid user id" do
