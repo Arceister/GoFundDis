@@ -115,6 +115,11 @@ RSpec.describe DonationsController do
             post :create, params: {donation: attributes_for(:donation)}
           }.to change(Donation, :count).by(1)
         end
+
+        it "redirects to donation page" do
+          post :create, params: {donation: attributes_for(:donation)}
+          expect(response).to redirect_to(donation_path(assigns[:donation]))
+        end
       end
 
       context "with invalid objects" do
