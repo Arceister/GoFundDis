@@ -146,11 +146,17 @@ RSpec.describe DonationsController do
 
   describe 'PATCH #update' do
     context "with logged in user" do
-      context "with valid object" do
-        
+      context "with correct user" do
+        context "with valid object" do
+          
+        end
+  
+        context "with invalid object" do
+          
+        end
       end
 
-      context "with invalid object" do
+      context "with incorrect user" do
         
       end
     end
