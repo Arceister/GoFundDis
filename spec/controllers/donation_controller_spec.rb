@@ -184,7 +184,15 @@ RSpec.describe DonationsController do
       end
 
       context "with incorrect user" do
-        
+        before :each do
+          @user2 = create(:user, email: "emailbaru2@email.com", phone: "08129333333333")
+          @donation = create(:donation, user_id: @user2.id)
+        end
+
+        it "returns 401 HTTP status" do
+          patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Bantu Jagad Beli PS5")}
+          expect(response).to have_http_status(401)
+        end
       end
     end
 

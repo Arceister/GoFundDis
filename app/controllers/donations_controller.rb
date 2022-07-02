@@ -56,6 +56,8 @@ class DonationsController < ApplicationController
             format.json { render json: @donation.errors, status: :unprocessable_entity }
           end
         end
+      else
+        render :file => "#{Rails.root}/public/401.html",  layout: false, status: 401
       end
     end
   end
