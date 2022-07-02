@@ -137,7 +137,10 @@ RSpec.describe DonationsController do
     end
 
     context "with not logged in user" do
-      
+      it "redirects user to login page" do
+        post :create, params: {donation: attributes_for(:donation)}
+        expect(response).to redirect_to login_path
+      end
     end
   end
 end
