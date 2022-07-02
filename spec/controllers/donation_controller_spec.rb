@@ -251,6 +251,11 @@ RSpec.describe DonationsController do
         @user = create(:user)
         @donation = create(:donation, user_id: @user.id)
       end
+
+      it "redirects to login page" do
+        delete :destroy, params: {id: @donation}
+        expect(response).to redirect_to login_path
+      end
     end
   end
 end
