@@ -143,4 +143,20 @@ RSpec.describe DonationsController do
       end
     end
   end
+
+  describe 'PATCH #update' do
+    context "with logged in user" do
+      context "with valid object" do
+        
+      end
+
+      context "with invalid object" do
+        
+      end
+    end
+
+    context "with not logged in user" do
+      
+    end
+  end
 end
