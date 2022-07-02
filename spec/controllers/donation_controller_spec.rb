@@ -174,6 +174,12 @@ RSpec.describe DonationsController do
             patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Title Donasi", need: nil)}
             expect(@donation.title).not_to eq("Title Donasi")
           end
+
+          it "re-renders #edit" do
+            patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Title Donasi", need: nil)}
+            expect(assigns(:donation)).to eq @donation
+            expect(response).to render_template :edit
+          end
         end
       end
 
