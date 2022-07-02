@@ -33,6 +33,9 @@ class DonationsController < ApplicationController
         if @donation.save
           format.html { redirect_to donation_url(@donation), notice: "Donation was successfully created." }
           format.json { render :show, status: :created, location: @donation }
+        else
+          format.html { render :new, status: :unprocessable_entity, notice: "Register error!" }
+          format.json { render json: @donation.errors, status: :unprocessable_entity }
         end
       end
     end

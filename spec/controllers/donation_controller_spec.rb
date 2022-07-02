@@ -123,6 +123,11 @@ RSpec.describe DonationsController do
       end
 
       context "with invalid objects" do
+        it "doesn't save new donation in the database" do
+          expect{
+            post :create, params: {donation: attributes_for(:donation, title: nil)}
+          }.not_to change(Donation, :count)
+        end
       end
     end
 
