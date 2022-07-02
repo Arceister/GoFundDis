@@ -201,11 +201,27 @@ RSpec.describe DonationsController do
         @user = create(:user)
         @donation = create(:donation, user_id: @user.id)
       end
-      
+
       it "redirects to login page" do
         patch :update, params: {id: @donation, donation: attributes_for(:donation, title: "Bantu Jagad Beli PS5")}
         expect(response).to redirect_to login_path
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    context "with logged in user" do
+      context "with valid user id" do
+        
+      end
+
+      context "with invalid user id" do
+        
+      end
+    end
+
+    context "with not logged in user" do
+      
     end
   end
 end
