@@ -101,4 +101,23 @@ RSpec.describe DonationsController do
       end
     end
   end
+
+  describe 'POST #create' do
+    context "with logged in user" do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+      
+      context "with valid pbjects" do
+      end
+
+      context "with invalid objects" do
+      end
+    end
+
+    context "with not logged in user" do
+      
+    end
+  end
 end
