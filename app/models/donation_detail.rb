@@ -1,0 +1,2 @@
+class DonationDetail < ApplicationRecord
+end
