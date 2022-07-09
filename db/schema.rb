@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_29_181107) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_03_045554) do
+  create_table "donation_details", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "donation_id"
+    t.string "metode"
+    t.integer "value"
+    t.string "doa"
+    t.boolean "anonymous"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["donation_id"], name: "index_donation_details_on_donation_id"
+    t.index ["user_id"], name: "index_donation_details_on_user_id"
+  end
+
   create_table "donations", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -34,5 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_181107) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "donation_details", "donations"
+  add_foreign_key "donation_details", "users"
   add_foreign_key "donations", "users"
 end
