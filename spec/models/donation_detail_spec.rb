@@ -19,4 +19,14 @@ RSpec.describe DonationDetail, type: :model do
 
     expect(@donation_detail.errors[:user]).to include("must exist")
   end
+
+  it "is invalid without donation id" do
+    @user = create(:user)
+    @donation = create(:donation, user_id: @user.id)
+
+    @donation_detail = build(:donation_detail, user_id: @user.id)
+    @donation_detail.valid?
+
+    expect(@donation_detail.errors[:donation]).to include("must exist")
+  end
 end
