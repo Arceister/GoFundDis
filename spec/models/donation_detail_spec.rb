@@ -55,4 +55,17 @@ RSpec.describe DonationDetail, type: :model do
 
     expect(@donation_detail.errors[:value]).to include("can't be blank")
   end
+
+  it "is invalid without anonymous" do
+    @user = create(:user)
+    @donation = create(:donation, user_id: @user.id)
+
+    @donation_detail = build(:donation_detail, 
+      user_id: @user.id,
+      donation_id: @donation.id,
+      anonymous: nil)
+    @donation_detail.valid?
+
+    expect(@donation_detail.errors[:anonymous]).to include("is not included in the list")
+  end
 end
