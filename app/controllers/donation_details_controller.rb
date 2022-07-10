@@ -13,5 +13,8 @@ class DonationDetailsController < ApplicationController
 
   def new
     @donation_id = params[:id]
+    if !Current.user
+      redirect_to login_path
+    end
   end
 end
