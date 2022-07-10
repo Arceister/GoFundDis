@@ -36,6 +36,11 @@ RSpec.describe DonationDetailsController do
   
         session[:user_id] = @user.id
       end
+
+      it "returns a 200 HTTP Status" do
+        get :index
+        expect(response).to have_http_status(:ok)
+      end
     end
 
     context "with not logged in user" do
