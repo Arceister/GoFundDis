@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   delete "donations/:id", as: "", to: "donations#destroy"
 
   get "donationdetail/:id", as: "donationdetail", to: "donation_details#show"
+  get "donationhistory", as: "donationdetails", to: "donationdetail#index"
 end

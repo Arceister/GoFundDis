@@ -27,4 +27,19 @@ RSpec.describe DonationDetailsController do
       expect(assigns[:donation_detail]).to eq @donation_detail
     end
   end
+
+  describe 'GET #index' do
+    context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        @donation = create(:donation, user_id: @user.id)
+  
+        session[:user_id] = @user.id
+      end
+    end
+
+    context "with not logged in user" do
+      
+    end
+  end
 end
