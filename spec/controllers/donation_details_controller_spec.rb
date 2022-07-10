@@ -87,6 +87,11 @@ RSpec.describe DonationDetailsController do
         get :new, params: {id: @donation}
         expect(assigns(:donation_id)).to eq(@donation.id.to_s)
       end
+
+      it "renders #index template" do
+        get :new, params: {id: @donation}
+        expect(response).to render_template(:new)
+      end
     end
 
     context "with not logged in user" do
