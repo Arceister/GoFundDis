@@ -73,4 +73,19 @@ RSpec.describe DonationDetailsController do
       end
     end
   end
+
+  describe 'GET #new' do
+    context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        @donation = create(:donation, user_id: @user.id)
+  
+        session[:user_id] = @user.id
+      end
+    end
+
+    context "with not logged in user" do
+      
+    end
+  end
 end

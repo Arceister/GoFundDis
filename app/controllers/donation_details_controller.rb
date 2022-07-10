@@ -10,4 +10,8 @@ class DonationDetailsController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def new
+    
+  end
 end
