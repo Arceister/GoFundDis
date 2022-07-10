@@ -6,6 +6,8 @@ class DonationDetailsController < ApplicationController
   def index
     if Current.user
       @donation_details = Current.user.donation_details
+    else
+      redirect_to login_path
     end
   end
 end
