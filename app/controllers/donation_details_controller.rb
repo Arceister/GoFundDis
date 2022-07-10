@@ -12,6 +12,6 @@ class DonationDetailsController < ApplicationController
   end
 
   def new
-    
+    @donation_id = params[:id]
   end
 end

@@ -82,6 +82,11 @@ RSpec.describe DonationDetailsController do
   
         session[:user_id] = @user.id
       end
+      
+      it "recieves id from params" do
+        get :new, params: {id: @donation}
+        expect(assigns(:donation_id)).to eq(@donation.id.to_s)
+      end
     end
 
     context "with not logged in user" do
