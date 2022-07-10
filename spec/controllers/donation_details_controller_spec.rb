@@ -41,6 +41,11 @@ RSpec.describe DonationDetailsController do
         get :index
         expect(response).to have_http_status(:ok)
       end
+
+      it "renders #index template" do
+        get :index
+        expect(response).to render_template(:index)
+      end
     end
 
     context "with not logged in user" do
