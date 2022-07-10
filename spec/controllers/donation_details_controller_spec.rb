@@ -16,5 +16,10 @@ RSpec.describe DonationDetailsController do
       get :show, params: {id: @donation_detail}
       expect(response).to have_http_status(:ok)
     end
+
+    it "renders #show template" do
+      get :show, params: {id: @donation_detail}
+      expect(response).to render_template(:show)
+    end
   end
 end
