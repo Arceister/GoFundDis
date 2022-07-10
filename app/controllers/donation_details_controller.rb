@@ -4,6 +4,8 @@ class DonationDetailsController < ApplicationController
   end
 
   def index
-    
+    if Current.user
+      @donation_details = Current.user.donation_details
+    end
   end
 end

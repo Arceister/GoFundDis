@@ -46,6 +46,24 @@ RSpec.describe DonationDetailsController do
         get :index
         expect(response).to render_template(:index)
       end
+
+      it "get current user donation details" do
+        get :index
+
+        @user2 = create(:user, email: "emailbaru@email.com", phone: "081294111113")
+
+        @donation_detail_1 = create(:donation_detail, 
+          user_id: @user.id,
+          donation_id: @donation.id,
+          )
+        
+        @donation_detail_2 = create(:donation_detail, 
+          user_id: @user2.id,
+          donation_id: @donation.id,
+          )
+        
+        expect(assigns(:donation_details)).to match_array([@donation_detail_1])
+      end
     end
 
     context "with not logged in user" do
