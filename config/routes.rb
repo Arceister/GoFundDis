@@ -20,4 +20,10 @@ Rails.application.routes.draw do
   patch "donations/:id", as: "", to: "donations#update"
   put "donations/:id", as: "", to: "donations#update"
   delete "donations/:id", as: "", to: "donations#destroy"
+
+  get "donationdetail/:id", as: "donationdetail", to: "donation_details#show"
+  get "donationhistory", as: "donationdetails", to: "donation_details#index"
+  get "donate/:id", as: "new_donationdetail", to: "donation_details#new"
+  post "donate/:id", as: "", to: "donation_details#create"
+  delete "donate/:id", as: "", to: "donation_details#destroy"
 end
