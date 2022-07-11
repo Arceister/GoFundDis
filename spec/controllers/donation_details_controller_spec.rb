@@ -138,6 +138,14 @@ RSpec.describe DonationDetailsController do
               donation_detail: attributes_for(:donation_detail, metode: nil)}
           }.not_to change(DonationDetail, :count)
         end
+
+        it "rerenders #new after creating with invalid obejcts" do
+          post :create, params: {
+            id: @donation, 
+            donation_detail: attributes_for(:donation_detail, metode: nil)
+          }
+          expect(response).to render_template :new
+        end
       end
     end
 
