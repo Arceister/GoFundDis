@@ -203,7 +203,20 @@ RSpec.describe DonationDetailsController do
     end
 
     context "with not logged in user" do
-      
+      before :each do
+        @user = create(:user)
+        @donation = create(:donation, user_id: @user.id)
+
+        @donation_detail = create(:donation_detail, 
+          user_id: @user.id,
+          donation_id: @donation.id,
+        )
+      end
+
+      it "redirects to login page" do
+        delete :destroy, params: {id: @donation_detail}
+        expect(response).to redirect_to login_path
+      end
     end
   end
 end

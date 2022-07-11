@@ -51,6 +51,8 @@ class DonationDetailsController < ApplicationController
       else
         render :file => "#{Rails.root}/public/401.html",  layout: false, status: 401
       end
+    else
+      redirect_to login_path, notice: "You must be logged in to see this page!"
     end
   end
 
