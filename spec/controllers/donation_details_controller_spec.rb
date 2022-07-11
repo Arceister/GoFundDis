@@ -119,6 +119,15 @@ RSpec.describe DonationDetailsController do
               donation_detail: attributes_for(:donation_detail)}
           }.to change(DonationDetail, :count).by(1)
         end
+
+        it "redirects to index page" do
+          post :create, params: {
+            id: @donation, 
+            donation_detail: attributes_for(:donation_detail)
+          }
+
+          expect(response).to redirect_to donationdetails_path
+        end
       end
     end
 

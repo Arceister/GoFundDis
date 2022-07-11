@@ -24,7 +24,12 @@ class DonationDetailsController < ApplicationController
       @params[:user_id] = Current.user.id
       @params[:donation_id] = params[:id]
       @donation_detail = DonationDetail.new(@params)
-      @donation_detail.save
+      respond_to do |format|
+        if @donation_detail.save
+          format.html { redirect_to donationdetails_path, notice: "Donate succesful! Thanks for your donation." }
+          format.json { render :show, status: :created, location: donationdetails_path }
+        end
+      end
     end 
   end
 
