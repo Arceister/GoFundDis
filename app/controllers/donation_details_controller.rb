@@ -38,6 +38,10 @@ class DonationDetailsController < ApplicationController
     end 
   end
 
+  def destroy
+    
+  end
+
   private
     def donation_detail_params
       params.require(:donation_detail).permit(:metode, :value, :doa, :anonymous)

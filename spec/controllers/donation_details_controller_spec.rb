@@ -156,4 +156,38 @@ RSpec.describe DonationDetailsController do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    context "with logged in user" do
+      before :each do
+        @user = create(:user)
+        @donation = create(:donation, user_id: @user.id)
+
+        session[:user_id] = @user.id
+      end
+
+      context "with valid user" do
+        before :each do
+          @donation_detail = create(:donation_detail, 
+            user_id: @user.id,
+            donation_id: @donation.id,
+          )
+        end
+      end
+
+      context "with invalid user" do
+        before :each do
+          @user2 = create(:user, email: "emailbaru2@email.com", phone: "08129333333333")
+          @donation_detail = create(:donation_detail, 
+            user_id: @user2.id,
+            donation_id: @donation.id,
+          )
+        end
+      end
+    end
+
+    context "with not logged in user" do
+      
+    end
+  end
 end

@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get "donationhistory", as: "donationdetails", to: "donation_details#index"
   get "donate/:id", as: "new_donationdetail", to: "donation_details#new"
   post "donate/:id", as: "", to: "donation_details#create"
+  delete "donate/:id", as: "", to: "donation_details#destroy"
 end
