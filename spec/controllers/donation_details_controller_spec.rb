@@ -194,6 +194,11 @@ RSpec.describe DonationDetailsController do
             donation_id: @donation.id,
           )
         end
+
+        it "returns 401 http status" do
+          delete :destroy, params: {id: @donation_detail}
+          expect(response).to have_http_status(401)
+        end
       end
     end
 

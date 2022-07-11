@@ -48,6 +48,8 @@ class DonationDetailsController < ApplicationController
           format.html { redirect_to donationdetails_path, notice: "History successfully deleted!" }
           format.json { head :no_content }
         end
+      else
+        render :file => "#{Rails.root}/public/401.html",  layout: false, status: 401
       end
     end
   end
