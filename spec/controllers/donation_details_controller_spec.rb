@@ -150,7 +150,10 @@ RSpec.describe DonationDetailsController do
     end
 
     context "with not logged in user" do
-      
+      it "redirects to login page" do
+        get :index
+        expect(response).to redirect_to login_path
+      end
     end
   end
 end

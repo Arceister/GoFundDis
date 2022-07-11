@@ -33,6 +33,8 @@ class DonationDetailsController < ApplicationController
           format.json { render json: @donation_detail.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to login_path, notice: "You must be logged in to see this page!"
     end 
   end
 
