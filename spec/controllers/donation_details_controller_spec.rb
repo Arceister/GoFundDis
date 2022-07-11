@@ -129,6 +129,16 @@ RSpec.describe DonationDetailsController do
           expect(response).to redirect_to donationdetails_path
         end
       end
+
+      context "with invalid object" do
+        it "not saves new donation history in the database" do
+          expect{
+            post :create, params: {
+              id: @donation, 
+              donation_detail: attributes_for(:donation_detail, metode: nil)}
+          }.not_to change(DonationDetail, :count)
+        end
+      end
     end
 
     context "with not logged in user" do

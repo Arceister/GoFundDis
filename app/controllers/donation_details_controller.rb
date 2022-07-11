@@ -28,6 +28,9 @@ class DonationDetailsController < ApplicationController
         if @donation_detail.save
           format.html { redirect_to donationdetails_path, notice: "Donate succesful! Thanks for your donation." }
           format.json { render :show, status: :created, location: donationdetails_path }
+        else
+          format.html { render :new, status: :unprocessable_entity, notice: "Register error!" }
+          format.json { render json: @donation_detail.errors, status: :unprocessable_entity }
         end
       end
     end 
