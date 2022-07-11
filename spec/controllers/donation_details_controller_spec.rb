@@ -173,6 +173,12 @@ RSpec.describe DonationDetailsController do
             donation_id: @donation.id,
           )
         end
+
+        it "deletes donation from database" do
+          expect{
+            delete :destroy, params: {id: @donation_detail}
+          }.to change(DonationDetail, :count).by(-1)
+        end
       end
 
       context "with invalid user" do

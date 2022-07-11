@@ -39,7 +39,12 @@ class DonationDetailsController < ApplicationController
   end
 
   def destroy
-    
+    if Current.user
+      @donation_detail = DonationDetail.find(params[:id])
+      if @donation_detail.user_id === Current.user.id
+        @donation_detail.destroy
+      end
+    end
   end
 
   private
