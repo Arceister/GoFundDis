@@ -43,6 +43,11 @@ class DonationDetailsController < ApplicationController
       @donation_detail = DonationDetail.find(params[:id])
       if @donation_detail.user_id === Current.user.id
         @donation_detail.destroy
+
+        respond_to do |format|
+          format.html { redirect_to donationdetails_path, notice: "History successfully deleted!" }
+          format.json { head :no_content }
+        end
       end
     end
   end
