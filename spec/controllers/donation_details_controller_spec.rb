@@ -110,6 +110,16 @@ RSpec.describe DonationDetailsController do
   
         session[:user_id] = @user.id
       end
+
+      context "with valid objects" do
+        it "saves new donation history in the database" do
+          expect{
+            post :create, params: {
+              id: @donation, 
+              donation_detail: attributes_for(:donation_detail)}
+          }.to change(DonationDetail, :count).by(1)
+        end
+      end
     end
 
     context "with not logged in user" do

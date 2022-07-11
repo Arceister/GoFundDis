@@ -19,6 +19,17 @@ class DonationDetailsController < ApplicationController
   end
 
   def create
-    
+    if Current.user
+      @params = donation_detail_params
+      @params[:user_id] = Current.user.id
+      @params[:donation_id] = params[:id]
+      @donation_detail = DonationDetail.new(@params)
+      @donation_detail.save
+    end 
   end
+
+  private
+    def donation_detail_params
+      params.require(:donation_detail).permit(:metode, :value, :doa, :anonymous)
+    end
 end
